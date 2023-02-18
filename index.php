@@ -9,7 +9,7 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light" style="width:100%">
             <div class="container-fluid" >
                 <div class="navbar-brand navbar-left" style="max-width:100px">
                     <img src="Seamlogo.svg" alt="Seamless logo" style="height:75px;width:75px;">
@@ -17,10 +17,10 @@
                 <div class="navbar-brand me-auto" style="max-width:20%">
                     <h1>Seamless</h1>
                 </div>
-                <div>
+                <div class="btn-group">
                     <a class="navbar-brand">Home</a>
                     <a class="navbar-brand">Browse</a>
-                    <a class="navbar-brand">About</a>
+                    <a class="navbar-brand" href="/Seamless/about.php">About</a>
                 </div>
                 <div class="nav navbar-nav navbar-right">
                     <button class="btn btn-primary" type="submit">Login</button>
