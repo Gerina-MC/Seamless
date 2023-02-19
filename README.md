@@ -1,4 +1,4 @@
 Contributors:
-Gerina Mary C
-Pranamya Rajashekar
+Gerina Mary C,
+Pranamya Rajashekar,
 Madativenkata Sudiksha
