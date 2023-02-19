@@ -27,47 +27,145 @@
                 </div>
             </div>
         </nav>
-        <div id="content">
+        <div id="content" style="margin-left:5%;margin-right:5%">
+        <h3>Upload Design:</h3>
         <form method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 <input class="form-control" type="file" name="uploadfile" value="" />
-            </div>
+            </div><br>
             <div class="form-group">
+                <label for="appname"><h5>Apparel Name:</h5></label>
+                <input type="text" name="appname" required><br><br>
+
+                <label for="color"><h5>Colour:</h5></label>
+                <input type="text" name="color" required><br><br>
+
+                <label for="material"><h5>Material:</h5></label>
+                <input type="text" name="material" required><br><br>
+
+                <label for="gender"><h5>Gender:</h5></label>
+                <select name="gender">
+                <option value="none">None</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                </select><br><br>
+
+                <label for="age"><h5>Age Group:</h5></label>
+                <select name="age">
+                <option value="kids">Kids</option>
+                <option value="adults">Adults</option>
+                </select><br><br>
+
+
+                <h5>Sizes Available:</h5>
+                <input type="checkbox" name="size[]" value="XXS">
+                <label for="size[]">XXS</label><br>
+                <input type="checkbox" name="size[]" value="XS">
+                <label for="size[]">XS</label><br>
+                <input type="checkbox" name="size[]" value="S">
+                <label for="size[]">S</label><br>
+                <input type="checkbox" name="size[]" value="M">
+                <label for="size[]">M</label><br>
+                <input type="checkbox" name="size[]" value="L">
+                <label for="size[]">L</label><br>
+                <input type="checkbox" name="size[]" value="XL">
+                <label for="size[]">XL</label><br>
+                <input type="checkbox" name="size[]" value="XXL">
+                <label for="size[]">XXL</label><br>
+
+                <label for="price"><h5>Price:</h5></label>
+                <input type="number" name="price" min="0.1" max="10000000" step="0.01" value="1"><br><br>
+
+                <label for="description"><h5>Description:</h5></label>
+                <input type="textbox" name="description"><br><br>
+
                 <button class="btn btn-primary" type="submit" name="upload">Save</button>
+                <button class="btn btn-danger" onclick="window.location.href='#';">Back</button>
             </div>
         </form>
-    </div>
     <?php
     error_reporting(0);
     
     $msg = "";
-    
-    // If upload button is clicked ...
-    if (isset($_POST['upload'])) {
-    
-        $filename = $_FILES["uploadfile"]["name"];
-        $tempname = $_FILES["uploadfile"]["tmp_name"];
-        if($filename)
+    $db = mysqli_connect("localhost", "root", "", "designs");
+    $aname=$_POST['appname'];
+    $col=$_POST['color'];
+    $mat=$_POST['material'];
+    $gen=$_POST['gender'];
+    $agrp=$_POST['age'];
+    $pri=$_POST['price'];
+    $des="";
+    if(isset($POST['description'])){
+        $des=$_POST['description'];
+    }
+    $checkbox1=$_POST['size'];  
+    $chk="";
+    $i=0;  
+    foreach($checkbox1 as $chk1)  
+    {   if($i)
         {
-            $folder = "./image/" . $filename;
+            $chk .= ",".$chk1; 
+        }
+        else{
+            $chk .= $chk1;
+        }
+        $i+=1; 
+    }  
+    if (isset($_POST['upload'])) {
+        
+        $target_dir = "image/";
+        $fname = $_FILES["uploadfile"]["name"];
+        if($fname){
+        $filename = $target_dir . basename($_FILES["uploadfile"]["name"]);
+        $tempname = $_FILES["uploadfile"]["tmp_name"];
+        $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["uploadfile"]["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        }
+        else {
+            echo "<h5> File is not an image.</h5><br>";
+            $uploadOk = 0;
+        }
+
+        if (file_exists($filename)) {
+            echo "<h5> Sorry, file already exists.</h5><br>";
+            $uploadOk = 0;
+        }
+        
+        else if ($_FILES["fileToUpload"]["size"] > 500000) {
+            echo "<h5> Sorry, your file is too large.</h5><br>";
+            $uploadOk = 0;
+        }
+        else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "<h5> Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h5><br>";
+            $uploadOk = 0;
+        }
+        else if($fname)
+        {
+            $folder = "./image/" . $fname;
         
             $db = mysqli_connect("localhost", "root", "", "designs");
 
-            $sql = "INSERT INTO image (filename) VALUES ('$filename')";
+            $sql = "INSERT INTO image (filename,apparel,size,colour,material,gender,age,price,description) VALUES ('$fname','$aname','$chk','$col','$mat','$gen','$agrp','$pri','$des')";
 
             mysqli_query($db, $sql);
             if (move_uploaded_file($tempname, $folder)) {
-                echo "<h3>  Design uploaded successfully!</h3>";
-                echo $filename;
+                echo "<h5>  Design uploaded successfully!</h5><br>";
             } else {
-                echo "<h3>  Failed to upload design!</h3>";
-                echo $filename;
+                echo "<h5>  Failed to upload design!</h6><br>";
             }
         }
         else{
-            echo "<h3>Choose a design</h3>";
+            echo "<h5>  Failed to upload design!</h6><br>";
+        }
+        }
+        else{
+            echo "<h5>Choose a design</h5><br>";
         }
     }
     ?>
+    </div>
     </body>
 </html>
