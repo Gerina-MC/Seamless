@@ -1,0 +1,10 @@
+#form
+{
+    text-align:center;  
+    border: solid gray 1px;  
+    width:35%;  
+    border-radius: 3px;  
+    margin: 150px auto;  
+    background:white;  
+    padding: 50px;  
+}

@@ -21,11 +21,17 @@
                 </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
-                    <a class="navbar-brand">Browse</a>
                     <a class="navbar-brand" href="/Seamless/about.php">About</a>
-                </div>
-                <div class="nav navbar-nav navbar-right">
-                    <button class="btn btn-primary" type="submit">Login</button>
+                    <?PHP
+                    session_start();
+                    if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+                        echo "<a class='navbar-brand' href=/Seamless/login.php>Login</a>";
+                    }
+                    else{
+                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a><a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
+                    }
+
+                    ?>
                 </div>
             </div>
         </nav>

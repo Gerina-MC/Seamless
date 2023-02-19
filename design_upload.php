@@ -17,13 +17,19 @@
                 <div class="navbar-brand me-auto" style="max-width:20%">
                     <h1>Seamless</h1>
                 </div>
-                <div>
-                    <a class="navbar-brand">Home</a>
-                    <a class="navbar-brand">Browse</a>
-                    <a class="navbar-brand">About</a>
-                </div>
-                <div class="nav navbar-nav navbar-right">
-                    <button class="btn btn-primary" type="submit">Login</button>
+                <div class="btn-group">
+                    <a class="navbar-brand" href="/Seamless/index.php">Home</a>
+                    <a class="navbar-brand" href="/Seamless/about.php">About</a>
+                    <?PHP
+                    session_start();
+                    if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+                        echo "<a class='navbar-brand' href=/Seamless/login.php>Login</a>";
+                    }
+                    else{
+                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a><a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
+                    }
+
+                    ?>
                 </div>
             </div>
         </nav>
@@ -34,6 +40,12 @@
                 <input class="form-control" type="file" name="uploadfile" value="" />
             </div><br>
             <div class="form-group">
+                <label for="tailname"><h5>Designer Name:</h5></label>
+                <input type="text" name="tailname" required><br><br>
+
+                <label for="contact"><h5>Contact Detail:</h5></label>
+                <input type="text" name="contact" required><br><br>
+
                 <label for="appname"><h5>Apparel Name:</h5></label>
                 <input type="text" name="appname" required><br><br>
 
@@ -45,15 +57,15 @@
 
                 <label for="gender"><h5>Gender:</h5></label>
                 <select name="gender">
-                <option value="none">None</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="None">None</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
                 </select><br><br>
 
                 <label for="age"><h5>Age Group:</h5></label>
                 <select name="age">
-                <option value="kids">Kids</option>
-                <option value="adults">Adults</option>
+                <option value="Kids">Kids</option>
+                <option value="Adults">Adults</option>
                 </select><br><br>
 
 
@@ -80,7 +92,7 @@
                 <input type="textbox" name="description"><br><br>
 
                 <button class="btn btn-primary" type="submit" name="upload">Save</button>
-                <button class="btn btn-danger" onclick="window.location.href='#';">Back</button>
+                <button class="btn btn-danger" onclick="window.location.href='/Seamless/index.php';">Back</button>
             </div>
         </form>
     <?php
@@ -88,6 +100,8 @@
     
     $msg = "";
     $db = mysqli_connect("localhost", "root", "", "designs");
+    $tn=$_POST['tailname'];
+    $cont=$_POST['contact'];
     $aname=$_POST['appname'];
     $col=$_POST['color'];
     $mat=$_POST['material'];
@@ -148,7 +162,7 @@
         
             $db = mysqli_connect("localhost", "root", "", "designs");
 
-            $sql = "INSERT INTO image (filename,apparel,size,colour,material,gender,age,price,description) VALUES ('$fname','$aname','$chk','$col','$mat','$gen','$agrp','$pri','$des')";
+            $sql = "INSERT INTO image (filename,Tailor_Name,Contact,apparel,size,colour,material,gender,age,price,description) VALUES ('$fname','$tn','$cont','$aname','$chk','$col','$mat','$gen','$agrp','$pri','$des')";
 
             mysqli_query($db, $sql);
             if (move_uploaded_file($tempname, $folder)) {

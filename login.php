@@ -4,8 +4,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" type="text/css" href="style1.css">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style_gallery.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
@@ -14,9 +14,6 @@
             <div class="container-fluid" >
                 <div class="navbar-brand navbar-left" style="max-width:100px">
                     <img src="Seamlogo.svg" alt="Seamless logo" style="height:75px;width:75px;">
-                </div>
-                <div class="navbar-brand me-auto" style="max-width:20%">
-                    <h1>Seamless</h1>
                 </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
@@ -34,32 +31,24 @@
                 </div>
             </div>
         </nav>
-        <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">Popular designs</h3>
-        <div style="padding: 2rem">
-            <section class="gallery">
-               <?php
-               $db1 = mysqli_connect("localhost", "root", "","designs");
-               $query = mysqli_query($db1,"select * from image");
-               while($row = mysqli_fetch_array($query)) {
-                echo "<div class='item'>
-                    <img src='image/{$row['filename']}'>
-                    <div class='item__overlay'>
-                        <div style='margin: 2rem; text-align: center;'>
-                            <h4 style='color:blue;'>Designer: {$row['Tailor_Name']}</h4>
-                            <h4 style='color:blue;'>Contact: {$row['Contact']}</h4>
-                            <h4 style='color:blue;'>{$row['apparel']}</h4>
-                            <h6>Material: {$row['material']} Color: {$row['colour']}</h6>
-                            <h6>Size: {$row['size']}</h6>
-                            <h6>Gender: {$row['gender']} Age group: {$row['age']}</h6>
-                            <p>{$row['description']}</p>
-                            <div><h5 style='color:blue;'>{$row['price']}</h5></div>
-                        </div>
-                    </div>
-                </div>" ;
-               }
-               mysqli_close($db1);
-               ?>
-            </section>
-        </div>
+        <div id = "frm">  
+            <h1>Login</h1>  
+            <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
+              <p>  
+                <label> UserName: </label>  
+                <input type = "text" id ="user" name  = "user" />  
+              </p>  
+              <p>  
+                <label> Password: </label>  
+                <input type = "password" id ="pass" name  = "pass" />  
+              </p>  
+              <p>     
+                <input type =  "submit" id = "btn" value = "Login" style="height:30px" />  
+              </p><br>  
+              <p>
+                New user??Click here to <a href="register.php">register</a>
+              </p>
+            </form>  
+        </div>  
     </body>
 </html>
