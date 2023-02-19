@@ -15,6 +15,9 @@
                 <div class="navbar-brand navbar-left" style="max-width:100px">
                     <img src="Seamlogo.svg" alt="Seamless logo" style="height:75px;width:75px;">
                 </div>
+                <div class="navbar-brand me-auto" style="max-width:20%">
+                    <h1>Seamless</h1>
+                </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
                     <a class="navbar-brand" href="/Seamless/about.php">About</a>
