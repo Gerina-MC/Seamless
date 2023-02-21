@@ -63,6 +63,7 @@
                 }
         
             }else{
+            if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
         ?>
         <div id ="form">
             <form class="form" action="register.php" method="post">
@@ -83,6 +84,10 @@
             </div>
         <?php
             }
+        else{
+            echo "<h3>Already logged in...Logout to create a new account</h3>";
+        }
+        }
         ?>
     </body>
 </html>

@@ -33,6 +33,9 @@
                 </div>
             </div>
         </nav>
+        <?PHP
+            if (isset($_SESSION['login']) && $_SESSION['login'] != '') {
+        ?>
         <div id="content" style="margin-left:5%;margin-right:5%">
         <h3>Upload Design:</h3>
         <form method="POST" action="" enctype="multipart/form-data">
@@ -181,5 +184,11 @@
     }
     ?>
     </div>
+    <?php
+    }
+    else{
+        echo "<h3>Login to upload design</h3>";
+    }
+    ?>
     </body>
 </html>
