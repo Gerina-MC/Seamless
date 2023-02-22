@@ -101,34 +101,35 @@
     <?php
     error_reporting(0);
     
-    $msg = "";
-    $db = mysqli_connect("localhost", "root", "", "designs");
-    $tn=$_POST['tailname'];
-    $cont=$_POST['contact'];
-    $aname=$_POST['appname'];
-    $col=$_POST['color'];
-    $mat=$_POST['material'];
-    $gen=$_POST['gender'];
-    $agrp=$_POST['age'];
-    $pri=$_POST['price'];
-    $des="";
-    if(isset($POST['description'])){
-        $des=$_POST['description'];
-    }
-    $checkbox1=$_POST['size'];  
-    $chk="";
-    $i=0;  
-    foreach($checkbox1 as $chk1)  
-    {   if($i)
-        {
-            $chk .= ",".$chk1; 
-        }
-        else{
-            $chk .= $chk1;
-        }
-        $i+=1; 
-    }  
+      
     if (isset($_POST['upload'])) {
+        $msg = "";
+        $db = mysqli_connect("localhost", "root", "", "designs");
+        $tn=$_POST['tailname'];
+        $cont=$_POST['contact'];
+        $aname=$_POST['appname'];
+        $col=$_POST['color'];
+        $mat=$_POST['material'];
+        $gen=$_POST['gender'];
+        $agrp=$_POST['age'];
+        $pri=$_POST['price'];
+        $des="";
+        if(isset($POST['description'])){
+            $des=$_POST['description'];
+        }
+        $checkbox1=$_POST['size'];  
+        $chk="";
+        $i=0;  
+        foreach($checkbox1 as $chk1)  
+        {   if($i)
+            {
+                $chk .= ",".$chk1; 
+            }
+            else{
+                $chk .= $chk1;
+            }
+            $i+=1; 
+        }
         
         $target_dir = "image/";
         $fname = $_FILES["uploadfile"]["name"];
