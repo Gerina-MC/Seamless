@@ -100,11 +100,11 @@
         </form>
     <?php
     error_reporting(0);
-    
+    include('connection.php');
       
     if (isset($_POST['upload'])) {
         $msg = "";
-        $db = mysqli_connect("localhost", "root", "", "designs");
+        $db = mysqli_connect("localhost", "root", "", "seamless");
         $tn=$_POST['tailname'];
         $cont=$_POST['contact'];
         $aname=$_POST['appname'];

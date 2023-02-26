@@ -41,15 +41,13 @@
                 $name=$_POST['Name'];
                 $username=$_POST['Username'];
                 $password=$_POST['Password'];
-                if(isset($_POST['Phone_Number']))
+                $email=$_POST['Email_address'];
+                $sql = "select *from login_details where username = '$username' and password = '$password'";  
+                $res1 = mysqli_query($con, $sql);  
+                $row = mysqli_fetch_array($res1, MYSQLI_ASSOC);  
+                $count = mysqli_num_rows($res1);
+                if(!($count))
                 {
-                    $phone=$_POST['Phone_Number'];
-                }
-                $email="";
-                if(isset($_POST['Email_address']))
-                {
-                    $phone=$_POST['Email_address'];
-                }
                 $query="INSERT into login_details(Name,Username,Password,Phone_Number,Email_address)VALUES('$name','$username','$password','$phone','$email')";
                 $result   = mysqli_query($con, $query);
                 if($result)
@@ -61,6 +59,12 @@
                 {
                     echo "error:".mysqli_error($con);
                 }
+                }
+                else
+                {
+                    echo "<h3>Username already exists...choose another username</h3>";
+                    echo "<h3><a href='register.php'>Register</a></h3>";
+                }
         
             }else{
             if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
@@ -71,13 +75,11 @@
                 <br>
                 <input type="text" class="login-input" name="Name" placeholder="Name" required><br>
                 <br>
-                <input type="text" class="login-input" name="Username" placeholder="Username"><br>
+                <input type="text" class="login-input" name="Username" placeholder="Username" required><br>
                 <br>
-                <input type="password" class="login-input" name="Password" placeholder="Password"><br>
+                <input type="password" class="login-input" name="Password" placeholder="Password" required><br>
                 <br>
-                <input type="text" class="login-input" name="Phone Number" placeholder="Phone_Number"><br>
-                <br>
-                <input type="text" class="login-input" name="email" placeholder="Email_address"><br>
+                <input type="text" class="login-input" name="email" placeholder="Email_address" required><br>
                 <br>
                 <input type="submit" name="submit" value="Register" class="login-button">
             </form>

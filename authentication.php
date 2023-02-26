@@ -4,7 +4,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -44,27 +44,14 @@
         if($count == 1){  
             echo "<h1>Profile:</h1>";
             session_start();
-		    $_SESSION['login'] = "1";
+		    $_SESSION['login'] =$row['Username'];
             $phone=$row['Phone_Number'];
             $email=$row['Email_address'];
             echo "<h3><center>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Name"]."</center></h3>";
             echo "\n";
             echo "<h3><center>Username:&nbsp;&nbsp;&nbsp;&nbsp;".$row["Username"]."</center></h3>";
             echo "\n";
-            if(empty($phone))
-            {
-            }
-            else
-            {
-                echo "<h3><center>Phone Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Phone_Number"]."</center></h3>";
-            }
-            if(empty($email))
-            {
-            }
-            else
-            {
-                echo "<h3><center>Email address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Email_address"]."</center></h3>";
-            }
+            echo "<h3><center>Email address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Email_address"]."</center></h3>";
             echo "<h3><a href=design_upload.php>Upload Design</h3>";
             echo "<h3><a href=logout.php>Logout</h3>";
         }  

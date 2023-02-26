@@ -8,3 +8,47 @@
     background:white;  
     padding: 50px;  
 }
+
+.gallery {
+    display: grid;
+    margin: 2rem auto;
+    grid-template-columns: repeat(4, 25%);
+    grid-column: calc(25%-10px);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+}
+
+.item {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.item img {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.item__overlay {
+    background: rgba(255, 255, 255, 0.651);
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    position: relative;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    transition: 0.5s ease;
+    transform: translateY(100%);
+}
+
+.item:hover .item__overlay {
+    height: 100%;
+    transform: translateY(0);
+}
