@@ -27,7 +27,9 @@
                         echo "<a class='navbar-brand' href=/Seamless/login.php>Login</a>";
                     }
                     else{
-                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a><a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/profile.php>Profile</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
                     }
 
                     ?>
@@ -37,7 +39,8 @@
         <?PHP
             if (isset($_SESSION['login']) && $_SESSION['login'] != '') {
         ?>
-        <?php     
+        <?php
+        error_reporting(0);     
         include('connection.php'); 
         $username = $_SESSION['login']; 
           

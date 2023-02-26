@@ -27,7 +27,9 @@
                         echo "<a class='navbar-brand' href=/Seamless/login.php>Login</a>";
                     }
                     else{
-                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a><a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/profile.php>Profile</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
                     }
 
                     ?>

@@ -41,10 +41,12 @@
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
         $count = mysqli_num_rows($result); 
           
-        if($count == 1){  
-            echo "<h1>Profile:</h1>";
+        if($count == 1){
             session_start();
 		    $_SESSION['login'] =$row['Username'];
+            header("Location: profile.php", true, 301);
+            exit();  
+            /*echo "<h1>Profile:</h1>";
             $phone=$row['Phone_Number'];
             $email=$row['Email_address'];
             echo "<h3><center>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Name"]."</center></h3>";
@@ -53,7 +55,7 @@
             echo "\n";
             echo "<h3><center>Email address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Email_address"]."</center></h3>";
             echo "<h3><a href=design_upload.php>Upload Design</h3>";
-            echo "<h3><a href=logout.php>Logout</h3>";
+            echo "<h3><a href=logout.php>Logout</h3>";*/
         }  
         else{
             session_start();

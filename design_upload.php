@@ -26,7 +26,9 @@
                         echo "<a class='navbar-brand' href=/Seamless/login.php>Login</a>";
                     }
                     else{
-                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a><a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/design_upload.php>Upload Design</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/profile.php>Profile</a>";
+                        echo "<a class='navbar-brand' href=/Seamless/logout.php>Logout</a>";
                     }
 
                     ?>
@@ -43,12 +45,6 @@
                 <input class="form-control" type="file" name="uploadfile" value="" />
             </div><br>
             <div class="form-group">
-                <label for="tailname"><h5>Designer Name:</h5></label>
-                <input type="text" name="tailname" required><br><br>
-
-                <label for="contact"><h5>Contact Detail:</h5></label>
-                <input type="text" name="contact" required><br><br>
-
                 <label for="appname"><h5>Apparel Name:</h5></label>
                 <input type="text" name="appname" required><br><br>
 
@@ -103,10 +99,20 @@
     include('connection.php');
       
     if (isset($_POST['upload'])) {
+        include('connection.php'); 
+        $username = $_SESSION['login']; 
+          
+            //to prevent from mysqli injection  
+            $username = stripcslashes($username);  
+            $username = mysqli_real_escape_string($con, $username);  
+          
+            $sql1 = "select *from login_details where username = '$username'";  
+            $result = mysqli_query($con, $sql1);  
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $msg = "";
         $db = mysqli_connect("localhost", "root", "", "seamless");
-        $tn=$_POST['tailname'];
-        $cont=$_POST['contact'];
+        $tn=$row['Name'];
+        $cont=$row['Contact'];
         $aname=$_POST['appname'];
         $col=$_POST['color'];
         $mat=$_POST['material'];
@@ -163,10 +169,8 @@
         else if($fname)
         {
             $folder = "./image/" . $fname;
-        
-            $db = mysqli_connect("localhost", "root", "", "designs");
 
-            $sql = "INSERT INTO image (filename,Tailor_Name,Contact,apparel,size,colour,material,gender,age,price,description) VALUES ('$fname','$tn','$cont','$aname','$chk','$col','$mat','$gen','$agrp','$pri','$des')";
+            $sql = "INSERT INTO image (filename,Tailor_Name,Username,Contact,apparel,size,colour,material,gender,age,price,description) VALUES ('$fname','$tn','$username','$cont','$aname','$chk','$col','$mat','$gen','$agrp','$pri','$des')";
 
             mysqli_query($db, $sql);
             if (move_uploaded_file($tempname, $folder)) {
