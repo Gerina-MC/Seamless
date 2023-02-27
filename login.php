@@ -45,14 +45,14 @@
             <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
                 <p>  
                 <label> UserName: </label>  
-                <input type = "text" id ="user" name  = "user" />  
+                <input type = "text" id ="user" name  = "user" required/>  
                 </p>  
                 <p>  
                 <label> Password: </label>  
-                <input type = "password" id ="pass" name  = "pass" />  
+                <input type = "password" id ="pass" name  = "pass" required/>  
                 </p>  
                 <p>     
-                <input type =  "submit" id = "btn" value = "Login" style="height:30px" />  
+                <input type =  "submit" id = "btn" value = "Login" class="btn btn-primary"/>  
                 </p><br>  
                 <p>
                 New user??Click here to <a href="register.php">register</a>

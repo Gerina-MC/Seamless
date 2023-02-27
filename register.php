@@ -84,7 +84,7 @@
                 <br>
                 <input type="text" class="login-input" name="Email_address" placeholder="Email_address" required><br>
                 <br>
-                <input type="submit" name="submit" value="Register" class="login-button">
+                <input type="submit" name="submit" value="Register" class="btn btn-primary">
             </form>
             </div>
         <?php
