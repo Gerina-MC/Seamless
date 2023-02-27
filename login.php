@@ -43,20 +43,20 @@
         <div id = "frm">  
             <h1>Login</h1>  
             <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
-              <p>  
+                <p>  
                 <label> UserName: </label>  
                 <input type = "text" id ="user" name  = "user" />  
-              </p>  
-              <p>  
+                </p>  
+                <p>  
                 <label> Password: </label>  
                 <input type = "password" id ="pass" name  = "pass" />  
-              </p>  
-              <p>     
+                </p>  
+                <p>     
                 <input type =  "submit" id = "btn" value = "Login" style="height:30px" />  
-              </p><br>  
-              <p>
+                </p><br>  
+                <p>
                 New user??Click here to <a href="register.php">register</a>
-              </p>
+                </p>
             </form>  
         </div>
     <?php
