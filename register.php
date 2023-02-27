@@ -20,6 +20,7 @@
                 </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
+                    <a class="navbar-brand" href="/Seamless/browse.php">Browse</a>
                     <a class="navbar-brand" href="/Seamless/about.php">About</a>
                     <?PHP
                     session_start();
@@ -50,7 +51,7 @@
                 $count = mysqli_num_rows($res1);
                 if(!($count))
                 {
-                $query="INSERT into login_details(Name,Username,Password,Phone_Number,Email_address)VALUES('$name','$username','$password','$phone','$email')";
+                $query="INSERT into login_details(Name,Username,Password,Email_address)VALUES('$name','$username','$password','$email')";
                 $result   = mysqli_query($con, $query);
                 if($result)
                 {
@@ -81,7 +82,7 @@
                 <br>
                 <input type="password" class="login-input" name="Password" placeholder="Password" required><br>
                 <br>
-                <input type="text" class="login-input" name="email" placeholder="Email_address" required><br>
+                <input type="text" class="login-input" name="Email_address" placeholder="Email_address" required><br>
                 <br>
                 <input type="submit" name="submit" value="Register" class="login-button">
             </form>
@@ -89,7 +90,7 @@
         <?php
             }
         else{
-            echo "<h3>Already logged in...Logout to create a new account</h3>";
+            echo "<h3>Already logged in...<a href='logout.php'>logout</a> to create a new account</h3>";
         }
         }
         ?>

@@ -19,6 +19,7 @@
                 </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
+                    <a class="navbar-brand" href="/Seamless/browse.php">Browse</a>
                     <a class="navbar-brand" href="/Seamless/about.php">About</a>
                     <?PHP
                     session_start();
@@ -39,7 +40,7 @@
             if (isset($_SESSION['login']) && $_SESSION['login'] != '') {
         ?>
         <div id="content" style="margin-left:5%;margin-right:5%">
-        <h3>Upload Design:</h3>
+        <h3 style="color:rgb(0, 0, 94)">Upload Design</h3>
         <form method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 <input class="form-control" type="file" name="uploadfile" value="" />
@@ -110,7 +111,6 @@
             $result = mysqli_query($con, $sql1);  
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $msg = "";
-        $db = mysqli_connect("localhost", "root", "", "seamless");
         $tn=$row['Name'];
         $cont=$row['Contact'];
         $aname=$_POST['appname'];
@@ -172,7 +172,7 @@
 
             $sql = "INSERT INTO image (filename,Tailor_Name,Username,Contact,apparel,size,colour,material,gender,age,price,description) VALUES ('$fname','$tn','$username','$cont','$aname','$chk','$col','$mat','$gen','$agrp','$pri','$des')";
 
-            mysqli_query($db, $sql);
+            mysqli_query($con, $sql);
             if (move_uploaded_file($tempname, $folder)) {
                 echo "<h5>  Design uploaded successfully!</h5><br>";
             } else {
@@ -192,7 +192,7 @@
     <?php
     }
     else{
-        echo "<h3>Login to upload design</h3>";
+        echo "<h3><a href='login.php'>Login</a> to upload design</h3>";
     }
     ?>
     </body>

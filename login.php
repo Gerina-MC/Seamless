@@ -20,6 +20,7 @@
                 </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
+                    <a class="navbar-brand" href="/Seamless/browse.php">Browse</a>
                     <a class="navbar-brand" href="/Seamless/about.php">About</a>
                     <?PHP
                     session_start();
@@ -61,7 +62,7 @@
     <?php
     }
     else{
-        echo "<h3>Already logged in...Logout to login again</h3>";
+        echo "<h3>Already logged in...<a href='logout.php'>logout</a> to login again</h3>";
     }
     ?>  
     </body>

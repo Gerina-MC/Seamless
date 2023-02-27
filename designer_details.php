@@ -37,14 +37,16 @@
                 </div>
             </div>
         </nav>
-        <?PHP
-            if (isset($_SESSION['login']) && $_SESSION['login'] != '') {
-        ?>
         <?php
-        error_reporting(0);     
-        include('connection.php'); 
-        $username = $_SESSION['login']; 
-          
+        error_reporting(0);    
+        include('connection.php');
+        $url = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+        parse_url( $url, $component = -1 );
+        $url_components = parse_url($url);
+        parse_str($url_components['query'], $params);
+        $username=$params['user']; 
+        if($username)
+        {  
             //to prevent from mysqli injection  
             $username = stripcslashes($username);  
             $username = mysqli_real_escape_string($con, $username);  
@@ -55,8 +57,7 @@
             $count = mysqli_num_rows($result); 
               
             if($count == 1){  
-                echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)'>Profile</h3>";
-                $_SESSION['login'] =$row['Username'];
+                echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)'>{$row['Name']}'s profile</h3>";
                 $email=$row['Email_address'];
                 echo "<h5><center>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Name"]."</center></h5>";
                 echo "\n";
@@ -65,18 +66,13 @@
                 echo "<h5><center>Email address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Email_address"]."</center></h5>";
             }
 
+        
+        echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)'>{$row['Name']}'s designs</h3>";
         ?>
-        <?php
-        $con = mysqli_connect("localhost", "root", "","seamless");
-        $query = mysqli_query($con,"select * from image where username = '$username'");  
-        $count = mysqli_num_rows($query);
-        if($count)
-        {
-        ?>
-        <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">My designs</h3>
         <div style="padding: 2rem">
             <section class="gallery">
-        <?php
+                <?php
+                $query = mysqli_query($con,"select * from image where username = '$username'");
                 while($row1 = mysqli_fetch_array($query)) {
                 echo "<div class='item'>
                     <img src='image/{$row1['filename']}'>
@@ -93,18 +89,12 @@
                 </div>" ;
                 }
             }
-                else
-                {
-                    echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)''>No designs were uploaded</h3>";
-                }
+            else
+            {
+                echo "<h3><a href='browse.php'>Choose</a> a valid designer</h3>";
+            }
                 ?>
             </section>
         </div>
-        <?php
-    }
-    else{
-        echo "<h3><a href='login.php'>Login</a> to view profile</h3>";
-    }
-    ?>
     </body>
 </html>

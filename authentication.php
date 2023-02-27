@@ -20,6 +20,7 @@
                 </div>
                 <div class="btn-group">
                     <a class="navbar-brand" href="/Seamless/index.php">Home</a>
+                    <a class="navbar-brand" href="/Seamless/browse.php">Browse</a>
                     <a class="navbar-brand" href="/Seamless/about.php">About</a>
                 </div>
             </div>
