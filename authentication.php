@@ -10,21 +10,25 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <nav class="navbar navbar-light bg-light" style="width:100%">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top" style="width:100%">
             <div class="container-fluid" >
-                <div class="navbar-brand navbar-left" style="max-width:100px">
-                    <img src="Seamlogo.svg" alt="Seamless logo" style="height:75px;width:75px;">
-                </div>
-                <div class="navbar-brand me-auto" style="max-width:20%">
-                    <h1>Seamless</h1>
-                </div>
-                <div class="btn-group">
-                    <a class="navbar-brand" href="/Seamless/index.php">Home</a>
-                    <a class="navbar-brand" href="/Seamless/browse.php">Browse</a>
-                    <a class="navbar-brand" href="/Seamless/about.php">About</a>
+                <a href="/Seamless/index.php" class="navbar-brand navbar-left">
+                    <h1><img src="Seamlogo.svg" alt="Seamless logo" class="d-inline-block align-text-center" style="height:75px;width:75px;">
+                    Seamless</h1>
+                </a>
+            </div>
+            <div class="navbar-nav" >
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <a class="nav-link" href="/Seamless/index.php">Home</a>
+                    <a class="nav-link" href="/Seamless/browse.php">Browse</a>
+                    <a class="nav-link" href="/Seamless/about.php">About</a>
                 </div>
             </div>
         </nav>
+        <div style="height:150px"></div>
 <?php
     error_reporting(0);      
     include('connection.php'); 
