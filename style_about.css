@@ -10,14 +10,20 @@ h2 {
     margin: 0 2rem;
 }
 
-img {
+.im {
     display: inline-block;
-    max-width:230px;
-    max-height:500px;
-    width: auto;
-    height: auto;
+    width:180px;
+    height:180px;
+}
+.images{
+    display: inline-block;
+    width: 185px;
 }
 
+.content{
+    width: 30%;
+    min-width: 200px;
+}
 .fa {
     padding: 20px;
     font-size: 30px;

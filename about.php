@@ -42,15 +42,15 @@
             <!--images-->
             <div>
                 <div class="images">
-                    <img src="img5.jpg" width="500" height="500" alt="Photo by https://unsplash.com/@the_modern_life_mrs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-                    <img src="img4.jpg"  class="tall" width="500" height="500" alt="Photo by https://unsplash.com/@waldemarbrandt67w?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
-                    " style="margin-top: 1rem;">
+                    <img src="img5.jpg" class="im" alt="Photo by https://unsplash.com/@the_modern_life_mrs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                    <img src="img4.jpg"  class="im" alt="Photo by https://unsplash.com/@waldemarbrandt67w?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" style="margin-top: 1rem;">
                 </div>
             </div>
-            <div>
+            <div class= "content">
                 <br><br><h2>Designs made with love. Designs made for <span style="color:blue">YOU</span>.</h2><br><br>
             </div>
-            <div>
+            <div class="content">
+                <br>
                 <p>
                     Here at Seamless we aim to provide accessibility to homemade designs for an affordable cost. Whether you are a self-made tailor or designer aiming to sell your work, or an eager shopaholic looking for the next perfect fit; at Seamless we have something for everyone.
                 </p>
