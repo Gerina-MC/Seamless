@@ -1,5 +1,6 @@
 .mission {
     display: flex;
+    flex-wrap: wrap;
     padding: 1rem;
     margin: 2rem;
 }
