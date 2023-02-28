@@ -38,7 +38,7 @@
             </div>
         </nav>
         <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">Popular designs</h3>
-        <div style="padding: 2rem">
+        <div style="justify-content: center;padding: 2rem">
             <section class="gallery">
                 <?php
                 error_reporting(0);      

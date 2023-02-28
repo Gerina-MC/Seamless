@@ -1,10 +1,8 @@
 .gallery {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     margin: 2rem auto;
-    grid-template-columns: repeat(4, 25%);
-    grid-column: calc(25%-10px);
-    grid-gap: 10px;
-    grid-auto-flow: dense;
+    justify-content: left;
 }
 
 .item {
@@ -15,11 +13,12 @@
 }
 
 .item img {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    width: 100%;
-    height: 100%;
+    width: 210px;
+    height: 420px;
     object-fit: cover;
     overflow: hidden;
     padding: 5px;
@@ -31,6 +30,8 @@
     grid-row: 1 / -1;
     position: relative;
     display: grid;
+    width: 210px;
+    height: 420px;
     justify-items: center;
     align-items: center;
     transition: 0.5s ease;
