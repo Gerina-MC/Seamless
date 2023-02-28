@@ -4,7 +4,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" type="text/css" href="style1.css">
+        <link rel="stylesheet" type="text/css" href="style_form.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -41,19 +41,13 @@
             if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
         ?>
         <div id = "frm">  
-            <h1>Login</h1>  
-            <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
-                <p>  
-                <label> UserName: </label>  
-                <input type = "text" id ="user" name  = "user" required/>  
-                </p>  
-                <p>  
-                <label> Password: </label>  
-                <input type = "password" id ="pass" name  = "pass" required/>  
-                </p>  
-                <p>     
-                <input type =  "submit" id = "btn" value = "Login" class="btn btn-primary"/>  
-                </p><br>  
+            <h2>Login</h2>  
+            <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">   
+                <label> UserName: </label><br>  
+                <input type = "text" id ="user" name  = "user" style="width: 150px;" required/><br>   
+                <label> Password: </label><br>   
+                <input type = "password" id ="pass" name  = "pass" style="width: 150px;" required/><br><br>  
+                <input type =  "submit" id = "btn" value = "Login" class="btn btn-primary"/><br>  
                 <p>
                 New user??Click here to <a href="register.php">register</a>
                 </p>

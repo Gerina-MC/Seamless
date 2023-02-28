@@ -1,0 +1,10 @@
+#frm{  
+    border: solid gray 1px;  
+    width:25%;
+    text-align: center;
+    min-width: 180px;  
+    border-radius: 3px;  
+    margin: 5% auto;  
+    background:white;  
+    padding: 1%;
+} 

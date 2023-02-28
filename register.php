@@ -4,7 +4,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="style_form.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -72,19 +72,19 @@
             }else{
             if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
         ?>
-        <div id ="form">
+        <div id ="frm">
             <form class="form" action="register.php" method="post">
-                <h1 class="login-title">Registration</h1>
+                <h2 class="login-title">Registration</h2>
                 <br>
-                <input type="text" class="login-input" name="Name" placeholder="Name" required><br>
+                <input type="text" class="login-input" name="Name" placeholder="Name" style="width: 150px;" required><br>
                 <br>
-                <input type="text" class="login-input" name="Username" placeholder="Username" required><br>
+                <input type="text" class="login-input" name="Username" placeholder="Username" style="width: 150px;" required><br>
                 <br>
-                <input type="password" class="login-input" name="Password" placeholder="Password" required><br>
+                <input type="password" class="login-input" name="Password" placeholder="Password" style="width: 150px;" required><br>
                 <br>
-                <input type="text" class="login-input" name="Email_address" placeholder="Email_address" required><br>
+                <input type="text" class="login-input" name="Email_address" placeholder="Email_address" style="width: 150px;" required><br>
                 <br>
-                <input type="submit" name="submit" value="Register" class="btn btn-primary">
+                <input type="submit" name="submit" value="Register" class="btn btn-primary"><br><br>
             </form>
             </div>
         <?php
