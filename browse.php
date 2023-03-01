@@ -9,36 +9,35 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top" style="width:100%">
-            <div class="container-fluid" >
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="width:100%">
+            <div class="container-fluid navbar-left">
                 <a href="/Seamless/index.php" class="navbar-brand navbar-left">
-                    <h1><img src="Seamlogo.svg" alt="Seamless logo" class="d-inline-block align-text-center" style="height:75px;width:75px;">
-                    Seamless</h1>
+                    <h2><img src="Seamlogo.svg" alt="Seamless logo" class="d-inline-block align-text-center" style="height:50px;width:50px;">
+                    Seamless</h2>
                 </a>
-            </div>
-            <div class="navbar-nav" >
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                    <a class="nav-link" href="/Seamless/index.php">Home</a>
-                    <a class="nav-link active" href="/Seamless/browse.php">Browse</a>
-                    <a class="nav-link" href="/Seamless/about.php">About</a>
+            </div>
+            <div class="navbar-nav" >
+                <div class="collapse navbar-collapse navbar-right" id="collapsibleNavbar">
+                    <a class="nav-link" style="padding-left:10px" href="/Seamless/index.php">Home</a>
+                    <a class="nav-link active" style="padding-left:10px" href="/Seamless/browse.php">Browse</a>
+                    <a class="nav-link" style="padding-left:10px" href="/Seamless/about.php">About</a>
                     <?PHP
                     session_start();
                     if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
-                        echo "<a class='nav-link' href=/Seamless/login.php>Login</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/login.php>Login</a>";
                     }
                     else{
-                        echo "<a class='nav-link' href=/Seamless/design_upload.php>Upload Design</a>";
-                        echo "<a class='nav-link' href=/Seamless/profile.php>Profile</a>";
-                        echo "<a class='nav-link' href=/Seamless/logout.php>Logout</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/design_upload.php>Upload Design</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/profile.php>Profile</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/logout.php>Logout</a>";
                     }
                     ?>
                 </div>
             </div>
         </nav>
-        <div style="height:150px"></div>
+        <div style="height:85px"></div>
         <div>
             <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">List of designers</h3>
             <ul>
