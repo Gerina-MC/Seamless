@@ -60,16 +60,16 @@
                 $count = mysqli_num_rows($result);
                 if($count)
                 {
-                echo "  <div style='display: flex; justify-content:center; width:230px; margin: 5px; padding: 2rem 1rem; border: none; border-radius: 2%; box-shadow: 5px 10px 18px #888888;'>
-                            <div style='padding: 5px;'>
-                                <img src='profile.jpg' alt='profile-pic' style='height: 50px; border-radius: 100%;'>
-                            </div>
-                            <div style='text-align: left;'>
-                                <h4><a href='designer_details.php?user={$Username}'>{$Name}</a></h5>
-                                <h6>Contact me:</h6>
-                                <h6>{$Mail}</h6>
-                            </div>
-                        </div>" ;
+                echo "<div style='display: flex; justify-content:center; width:230px; margin: 5px; padding: 2rem 1rem; border: none; border-radius: 2%; box-shadow: 5px 10px 18px #888888;'>
+                    <div style='padding: 5px;'>
+                        <img src='profile.jpg' alt='profile-pic' style='height: 50px; border-radius: 100%;'>
+                    </div>
+                    <div style='text-align: left;'>
+                        <h4><a href='designer_details.php?user={$Username}'>{$Name}</a></h5>
+                        <h6>Contact me:</h6>
+                        <h6>{$Mail}</h6>
+                    </div>
+                </div>" ;
                 }
             }
             ?>
