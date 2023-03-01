@@ -7,11 +7,16 @@
         <link rel="stylesheet" href="style_about.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="utf-8">
+        <style>
+        .navbar{
+            background-color: #f3f3f3;
+        }
+        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="width:100%">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top" style="width:100%">
         <div class="container-fluid navbar-left">
                 <a href="/Seamless/index.php" class="navbar-brand navbar-left">
                     <h2><img src="Seamlogo.svg" alt="Seamless logo" class="d-inline-block align-text-center" style="height:50px;width:50px;">
