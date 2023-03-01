@@ -45,7 +45,7 @@
         <div style="height:85px"></div>
         <div>
             <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">List of designers</h3>
-            <ul>
+            <div style="display:flex;flex-wrap:wrap;margin: 10px;">
             <?php
             error_reporting(0);
             include('connection.php');
@@ -54,16 +54,26 @@
             while($row = mysqli_fetch_array($res)) { 
                 $Username=$row['Username'];
                 $Name=$row['Name'];
+                $Mail=$row['Email_address'];
                 $result = mysqli_query($con, "select *from image where username = '$Username'");  
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
                 $count = mysqli_num_rows($result);
                 if($count)
                 {
-                echo "<li><h5><a href='designer_details.php?user={$Username}'>{$Name}</a></h5></li>";
+                echo "  <div style='display: flex; justify-content:center; width:230px; margin: 5px; padding: 2rem 1rem; border: none; border-radius: 2%; box-shadow: 5px 10px 18px #888888;'>
+                            <div style='padding: 5px;'>
+                                <img src='profile.jpg' alt='profile-pic' style='height: 50px; border-radius: 100%;'>
+                            </div>
+                            <div style='text-align: left;'>
+                                <h4><a href='designer_details.php?user={$Username}'>{$Name}</a></h5>
+                                <h6>Contact me:</h6>
+                                <h6>{$Mail}</h6>
+                            </div>
+                        </div>" ;
                 }
             }
             ?>
-            </ul>
+        </div>
         </div>
     </body>
 </html>
