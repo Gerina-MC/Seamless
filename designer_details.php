@@ -66,11 +66,11 @@
             if($count == 1){  
                 echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)'>{$row['Name']}'s profile</h3>";
                 $email=$row['Email_address'];
-                echo "<h5><center>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Name"]."</center></h5>";
-                echo "\n";
-                echo "<h5><center>Username:&nbsp;&nbsp;&nbsp;&nbsp;".$row["Username"]."</center></h5>";
-                echo "\n";
-                echo "<h5><center>Email address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Email_address"]."</center></h5>";
+                echo "<div style='text-align:center'>
+                    <h5>Name: {$row['Name']}</h5>
+                    <h5>Username: {$row['Username']}</h5>
+                    <h5>Email address: {$row['Email_address']}</h5>
+                </div>";
             }
 
         
@@ -85,7 +85,7 @@
                     <img src='image/{$row1['filename']}'>
                     <div class='item__overlay'>
                         <div style='margin: 2rem; text-align: center;'>
-                            <h4 style='color:blue;'>{$row1['apparel']}</h4>
+                            <h5 style='color:blue;'>{$row1['apparel']}</h5>
                             <h6>Material: {$row1['material']} Color: {$row1['colour']}</h6>
                             <h6>Size: {$row1['size']}</h6>
                             <h6>Gender: {$row1['gender']} Age group: {$row1['age']}</h6>

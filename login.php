@@ -50,7 +50,7 @@
         <div id = "frm">  
             <h2 style="text-align:center">Login</h2>  
             <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">   
-                <label> UserName: </label><br>  
+                <label> Username: </label><br>  
                 <input type = "text" id ="user" name  = "user" style="width: 150px;" required/><br>   
                 <label> Password: </label><br>   
                 <input type = "password" id ="pass" name  = "pass" style="width: 150px;" required/><br><br>  

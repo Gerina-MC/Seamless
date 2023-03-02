@@ -47,70 +47,75 @@
         <?PHP
             if (isset($_SESSION['login']) && $_SESSION['login'] != '') {
         ?>
-        <?php
-        error_reporting(0);     
-        include('connection.php'); 
-        $username = $_SESSION['login']; 
-          
-            //to prevent from mysqli injection  
-            $username = stripcslashes($username);  
-            $username = mysqli_real_escape_string($con, $username);  
-          
-            $sql = "select *from login_details where username = '$username'";  
-            $result = mysqli_query($con, $sql);  
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-            $count = mysqli_num_rows($result); 
-              
-            if($count == 1){  
-                echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)'>Profile</h3>";
-                $_SESSION['login'] =$row['Username'];
-                $email=$row['Email_address'];
-                echo "<div style='text-align:center'>
-                    <h5>Name: {$row['Name']}</h5>
-                    <h5>Username: {$row['Username']}</h5>
-                    <h5>Email address: {$row['Email_address']}</h5>
-                </div>";
-
-        ?>
-        <?php
-        $query = mysqli_query($con,"select * from image where username = '$username'");  
-        $count = mysqli_num_rows($query);
-        if($count)
+        <?php    
+        include('connection.php');
+        
+        $url = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+        parse_url( $url, $component = -1 );
+        $url_components = parse_url($url);
+        parse_str($url_components['query'], $params);
+        $design=$params['des']; 
+        if($design)
         {
-        ?>
-        <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">My designs</h3>
-        <div style="padding: 2rem">
-            <section class="gallery">
-        <?php
-                while($row1 = mysqli_fetch_array($query)) {
-                echo "<div class='item'>
-                    <img src='image/{$row1['filename']}'>
-                    <div class='item__overlay'>
-                        <div style='margin: 2rem; text-align: center;'>
-                            <h5 style='color:blue;'>{$row1['apparel']}</h5>
-                            <h6>Material: {$row1['material']} Color: {$row1['colour']}</h6>
-                            <h6>Size: {$row1['size']}</h6>
-                            <h6>Gender: {$row1['gender']} Age group: {$row1['age']}</h6>
-                            <p>{$row1['description']}</p>
-                            <div><h5 style='color:blue;'>{$row1['price']}</h5></div>
-                            <a class='btn btn-danger' href='delete_design.php?des={$row1['filename']}'>Delete</a>
-                        </div>
-                    </div>
-                </div>" ;
-                }
+            $design = stripcslashes($design);  
+            $design = mysqli_real_escape_string($con, $design);  
+            $username=$_SESSION['login'];
+            $sql = "select *from image where filename = '$design' and username= '$username'";  
+            $result = mysqli_query($con, $sql);  
+            $count = mysqli_num_rows($result);
+            if(!$count || $count!==1)
+            {
+                echo "<h3>You are not authorized to do this action</h3>";
             }
+            else{
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                echo "
+                <div style='text-align:center'>
+                    <img src='image/{$design}' style='height:350px;width:250px;overflow:hidden;padding:10px;'>
+                    <h6>Apparel Name: {$row['apparel']}</h6>
+                    <h6>Material: {$row['material']}</h6>
+                    <h6>Color: {$row['colour']}</h6>
+                    <h6>Size: {$row['size']}</h6>
+                    <h6>Gender: {$row['gender']}</h6>
+                    <h6>Age group: {$row['age']}</h6>
+                    <h6>Price: {$row['price']}</h6>";
+                if(empty($row['description']))
+                {
+                    echo "</div>";
+                }
                 else
                 {
-                    echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)''>No designs were uploaded</h3>";
+                    echo "<h6>Description: {$row['description']}</h6></div>";
                 }
-                ?>
-            </section>
-        </div>
-        <?php
+                echo "<div style='text-align:center;margin:10px'>
+                <h4>Are you sure you want to delete?</h4>
+                <form method='POST' action='' enctype='multipart/form-data'>
+                <button class='btn btn-danger' type='submit' name='delete'>Yes</button>
+                <a class='btn btn-primary' href='profile.php'>No</a>
+                </form>
+                </div>";
+                if (isset($_POST['delete']))
+                {
+                    $username = $_SESSION['login'];
+                    unlink('image/'.$design);
+                    $sql1 = "DELETE FROM image WHERE username = '$username' and filename = '$design'";
+                    mysqli_query($con,$sql1);
+                    header('location:profile.php');
+                }
+                
+
+            }
+            
         }
+        else
+        {
+            echo "<h3><a href='profile.php'>Choose</a> a valid design</h3>";
+        }
+            ?>
+        <?php
     }
     else{
-        echo "<h3><a href='login.php'>Login</a> to view profile</h3>";
+        echo "<h3><a href='login.php'>Login</a> to delete design</h3>";
     }
     ?>
     </body>

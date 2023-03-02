@@ -99,7 +99,7 @@
                 <input type="textbox" name="description" maxlength="50"><br><br>
 
                 <button class="btn btn-primary" type="submit" name="upload">Save</button>
-                <button class="btn btn-danger" onclick="window.location.href='/Seamless/index.php';">Back</button>
+                <button class="btn btn-danger" onclick="window.location.href='/Seamless/profile.php';">Back</button>
             </div>
         </form>
     <?php
@@ -119,7 +119,7 @@
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $msg = "";
         $tn=$row['Name'];
-        $cont=$row['Contact'];
+        $cont=$row['Email_address'];
         $aname=$_POST['appname'];
         $col=$_POST['color'];
         $mat=$_POST['material'];
@@ -152,26 +152,21 @@
         $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
         $check = getimagesize($_FILES["uploadfile"]["tmp_name"]);
         if($check !== false) {
-            $uploadOk = 1;
         }
         else {
             echo "<h5> File is not an image.</h5><br>";
-            $uploadOk = 0;
         }
 
         if (file_exists($filename)) {
             echo "<h5> Sorry, file already exists.</h5><br>";
-            $uploadOk = 0;
         }
         
         else if ($_FILES["fileToUpload"]["size"] > 500000) {
             echo "<h5> Sorry, your file is too large.</h5><br>";
-            $uploadOk = 0;
         }
         else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
             echo "<h5> Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h5><br>";
-            $uploadOk = 0;
         }
         else if($fname)
         {

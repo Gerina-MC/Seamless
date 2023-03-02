@@ -60,9 +60,8 @@
                     <img src='image/{$row['filename']}'>
                     <div class='item__overlay'>
                         <div style='margin: 2rem; text-align: center;'>
-                            <h4 style='color:blue;'>Designer: <a href='designer_details.php?user={$Username}'>{$row2['Name']}</a></h4>
-                            <h5 style='color:blue;'>Contact: {$row2['Email_address']}</h5>
-                            <h5 style='color:blue;'>{$row['apparel']}</h5>
+                        <h5 style='color:blue;'>{$row['apparel']}</h5>
+                            <h5 style='color:blue;'>Made by: <a href='designer_details.php?user={$Username}'>{$row2['Name']}</a></h5>
                             <h6>Material: {$row['material']} Color: {$row['colour']}</h6>
                             <h6>Size: {$row['size']}</h6>
                             <h6>Gender: {$row['gender']} Age group: {$row['age']}</h6>
