@@ -96,7 +96,7 @@
                 <input type="number" name="price" min="0.1" max="10000000" step="0.01" value="1"><br><br>
 
                 <label for="description"><h5>Description:</h5></label>
-                <input type="textbox" name="description"><br><br>
+                <input type="textbox" name="description" maxlength="50"><br><br>
 
                 <button class="btn btn-primary" type="submit" name="upload">Save</button>
                 <button class="btn btn-danger" onclick="window.location.href='/Seamless/index.php';">Back</button>

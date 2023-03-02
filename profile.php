@@ -70,11 +70,10 @@
                 echo "<h5><center>Username:&nbsp;&nbsp;&nbsp;&nbsp;".$row["Username"]."</center></h5>";
                 echo "\n";
                 echo "<h5><center>Email address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row["Email_address"]."</center></h5>";
-            }
+            
 
         ?>
         <?php
-        $con = mysqli_connect("localhost", "root", "","seamless");
         $query = mysqli_query($con,"select * from image where username = '$username'");  
         $count = mysqli_num_rows($query);
         if($count)
@@ -108,6 +107,7 @@
             </section>
         </div>
         <?php
+        }
     }
     else{
         echo "<h3><a href='login.php'>Login</a> to view profile</h3>";
