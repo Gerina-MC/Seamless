@@ -98,8 +98,10 @@
                 <label for="description"><h5>Description:</h5></label>
                 <input type="textbox" name="description" maxlength="50"><br><br>
 
-                <button class="btn btn-primary" type="submit" name="upload" style="padding:5px">Save</button>
-                <button class="btn btn-danger" onclick="window.location.href='profile.php';" style="padding:5px">Back</button>
+                <div style="margin-bottom:10px">
+                <button class="btn btn-primary" type="submit" name="upload">Save</button>
+                <button class="btn btn-danger" onclick="window.location.href='profile.php';">Back</button>
+                </div>
             </div>
         </form>
     <?php
