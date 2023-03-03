@@ -16,7 +16,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <nav class="navbar navbar-expand-md navbar-light fixed-top" style="width:100%">
             <div class="container-fluid navbar-left">
-                <a href="/Seamless/index.php" class="navbar-brand navbar-left">
+                <a href="index.php" class="navbar-brand navbar-left">
                     <h2><img src="Seamlogo.svg" alt="Seamless logo" class="d-inline-block align-text-center" style="height:50px;width:50px;">
                     Seamless</h2>
                 </a>
@@ -25,18 +25,18 @@
             </div>
             <div class="navbar-nav" >
                 <div class="collapse navbar-collapse navbar-right" id="collapsibleNavbar">
-                    <a class="nav-link" style="padding-left:10px" href="/Seamless/index.php">Home</a>
-                    <a class="nav-link active" style="padding-left:10px" href="/Seamless/browse.php">Browse</a>
-                    <a class="nav-link" style="padding-left:10px" href="/Seamless/about.php">About</a>
+                    <a class="nav-link" style="padding-left:10px" href="index.php">Home</a>
+                    <a class="nav-link active" style="padding-left:10px" href="browse.php">Browse</a>
+                    <a class="nav-link" style="padding-left:10px" href="about.php">About</a>
                     <?PHP
                     session_start();
                     if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
-                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/login.php>Login</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href='login.php'>Login</a>";
                     }
                     else{
-                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/design_upload.php>Upload Design</a>";
-                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/profile.php>Profile</a>";
-                        echo "<a class='nav-link' style='padding-left:10px' href=/Seamless/logout.php>Logout</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href='design_upload.php'>Upload Design</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href='profile.php'>Profile</a>";
+                        echo "<a class='nav-link' style='padding-left:10px' href='logout.php'>Logout</a>";
                     }
                     ?>
                 </div>
