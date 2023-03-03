@@ -44,13 +44,13 @@
             </div>
         </nav>
         <div style="height:85px"></div>
-        <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">Popular designs</h3>
+        <h3 style="padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)">Recently uploaded</h3>
         <div style="justify-content: center;padding: 2rem">
             <section class="gallery">
                 <?php
                 error_reporting(0);      
                 include('connection.php');
-                $query = mysqli_query($con,"select * from image");
+                $query = mysqli_query($con,"select * from image order by id desc");
                 while($row = mysqli_fetch_array($query)) {
                 $Username=$row['Username'];
                 $sql = "select *from login_details where username = '$Username'";

@@ -47,7 +47,8 @@
         <?PHP
             if (isset($_SESSION['login']) && $_SESSION['login'] != '') {
         ?>
-        <?php    
+        <?php
+        error_reporting(0);    
         include('connection.php');
         
         $url = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];

@@ -107,7 +107,6 @@
     include('connection.php');
       
     if (isset($_POST['upload'])) {
-        include('connection.php'); 
         $username = $_SESSION['login']; 
           
             //to prevent from mysqli injection  
