@@ -98,8 +98,8 @@
                 <label for="description"><h5>Description:</h5></label>
                 <input type="textbox" name="description" maxlength="50"><br><br>
 
-                <button class="btn btn-primary" type="submit" name="upload">Save</button>
-                <button class="btn btn-danger" onclick="window.location.href='/Seamless/profile.php';">Back</button>
+                <button class="btn btn-primary" type="submit" name="upload" style="padding:5px">Save</button>
+                <button class="btn btn-danger" onclick="window.location.href='profile.php';" style="padding:5px">Back</button>
             </div>
         </form>
     <?php
