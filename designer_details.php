@@ -71,15 +71,17 @@
                     <h5>Username: {$row['Username']}</h5>
                     <h5>Email address: {$row['Email_address']}</h5>
                 </div>";
-            }
-
+                $query = mysqli_query($con,"select * from image where username = '$username'");  
+                $count1 = mysqli_num_rows($query);
+                if($count1)
+                {
         
         echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)'>{$row['Name']}'s designs</h3>";
         ?>
         <div style="padding: 2rem">
             <section class="gallery">
                 <?php
-                $query = mysqli_query($con,"select * from image where username = '$username'");
+                
                 while($row1 = mysqli_fetch_array($query)) {
                 echo "<div class='item'>
                     <img src='image/{$row1['filename']}'>
@@ -96,6 +98,16 @@
                 </div>" ;
                 }
             }
+            else
+                {
+                    echo "<h3 style='padding: 1rem 0 0 2rem; color:rgb(0, 0, 94)''>No designs were uploaded</h3>";
+                }
+        }
+        else
+            {
+                echo "<h3>User does not exist</h3>";
+            }
+        }
             else
             {
                 echo "<h3><a href='browse.php'>Choose</a> a valid designer</h3>";
