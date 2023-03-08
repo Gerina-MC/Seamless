@@ -93,7 +93,7 @@
                             <h6>Gender: {$row1['gender']} Age group: {$row1['age']}</h6>
                             <p>{$row1['description']}</p>
                             <div><h5 style='color:blue;'>{$row1['price']}</h5></div>
-                            <a class='btn btn-danger' href='delete_design.php?des={$row1['filename']}'>Delete</a>
+                            <a class='btn btn-danger' href='delete_design.php?des={$row1['id']}'>Delete</a>
                         </div>
                     </div>
                 </div>" ;

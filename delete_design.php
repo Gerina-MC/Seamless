@@ -61,7 +61,7 @@
             $design = stripcslashes($design);  
             $design = mysqli_real_escape_string($con, $design);  
             $username=$_SESSION['login'];
-            $sql = "select *from image where filename = '$design' and username= '$username'";  
+            $sql = "select *from image where id = '$design' and username= '$username'";  
             $result = mysqli_query($con, $sql);  
             $count = mysqli_num_rows($result);
             if(!$count || $count!==1)
@@ -70,9 +70,10 @@
             }
             else{
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $file = $row['filename'];
                 echo "
                 <div style='text-align:center'>
-                    <img src='image/{$design}' style='height:350px;width:250px;overflow:hidden;padding:10px;'>
+                    <img src='image/{$row['filename']}' style='height:350px;width:250px;overflow:hidden;padding:10px;'>
                     <h6>Apparel Name: {$row['apparel']}</h6>
                     <h6>Material: {$row['material']}</h6>
                     <h6>Color: {$row['colour']}</h6>
@@ -98,8 +99,8 @@
                 if (isset($_POST['delete']))
                 {
                     $username = $_SESSION['login'];
-                    unlink('image/'.$design);
-                    $sql1 = "DELETE FROM image WHERE username = '$username' and filename = '$design'";
+                    unlink('image/'.$file);
+                    $sql1 = "DELETE FROM image WHERE username = '$username' and filename = '$file'";
                     mysqli_query($con,$sql1);
                     header('location:profile.php');
                 }
